@@ -10,14 +10,31 @@ import Foundation
 import CoreData
 
 class EntryController {
- static let sharedInstance = EntryController()
-
-    var entries: [Entry] {
-        let fetchRequest: NSFetchRequest<Entry> = Entry.fetchRequest()
-        return (try? CoreDataStack.context.fetch(fetchRequest)) ?? []
+    
+    static let sharedInstance = EntryController()
+    
+    // MARK: - Source of Truth
+    
+    var fetchResultsController: NSFetchedResultsController<Entry>
+    
+    init() {
+        let request: NSFetchRequest<Entry> = Entry.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: true)]
+        
+        let resultsController: NSFetchedResultsController<Entry> = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        fetchResultsController = resultsController
+        
+        do {
+            try fetchResultsController.performFetch()
+        } catch {
+            print("There was an error performing the fetch \(error.localizedDescription)")
+        }
     }
-
-    //CRUD
+    
+    
+    // MARK: - CRUD Methods
+    
     func createEntry(withTitle: String, withBody: String) {
         // Could remove the wildcard if we added @discardableResult to the Model
         let _ = Entry(title: withTitle, body: withBody)
@@ -36,6 +53,9 @@ class EntryController {
         entry.managedObjectContext?.delete(entry)
         saveToPersistentStore()
     }
+    
+    
+    // MARK: - Persistence
 
     func saveToPersistentStore() {
         do {

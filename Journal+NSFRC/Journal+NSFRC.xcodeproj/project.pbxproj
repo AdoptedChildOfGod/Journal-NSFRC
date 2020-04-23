@@ -47,6 +47,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		40A689322451F5C0007A9299 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FB346EAA24513AC700B56A62 /* Model Controller */,
+				FB346EB124513FDB00B56A62 /* View Controllers */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		FB346E802451382F00B56A62 = {
 			isa = PBXGroup;
 			children = (
@@ -67,9 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				FB346EA3245138F500B56A62 /* Model */,
-				FB346EAA24513AC700B56A62 /* Model Controller */,
-				FB346EB124513FDB00B56A62 /* View Controllers */,
-				FB346EA52451392500B56A62 /* Storyboards */,
+				40A689322451F5C0007A9299 /* Controllers */,
+				FB346EA52451392500B56A62 /* Views */,
 				FB346EA42451391400B56A62 /* Resources */,
 			);
 			path = "Journal+NSFRC";
@@ -95,13 +103,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		FB346EA52451392500B56A62 /* Storyboards */ = {
+		FB346EA52451392500B56A62 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				FB346E922451382F00B56A62 /* Main.storyboard */,
 				FB346E9A2451383000B56A62 /* LaunchScreen.storyboard */,
 			);
-			path = Storyboards;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		FB346EAA24513AC700B56A62 /* Model Controller */ = {
@@ -116,8 +124,8 @@
 		FB346EB124513FDB00B56A62 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FB346EAD24513FB800B56A62 /* EntryDetailViewController.swift */,
 				FB346EAF24513FD600B56A62 /* EntryListTableViewController.swift */,
+				FB346EAD24513FB800B56A62 /* EntryDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
